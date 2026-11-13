@@ -257,12 +257,11 @@ dialog.lb::backdrop{background:rgba(10,16,12,.92)}
 <header class="hero" id="top">
   <div class="bg" role="img" aria-label="Snowy pines outside the Enchanted Forest A-Frame"></div>
   <div class="wrap">
-    <div class="kicker">Mike “Price” Price · birthday-adjacent · Dec 11–13, 2026</div>
+    <div class="kicker">Mike Price · Dec 11–13, 2026</div>
     <h1>Price Check<em>.</em></h1>
-    <p class="sub">Two nights in the pines, a real bed for everyone, and no more than $300 a head. Which cabin gets the honor?</p>
     <div class="countdown" id="cd" aria-label="Countdown to departure"></div>
     <div class="crew">
-      <span class="label">The crew</span>
+      
       <span class="chip bday"><i>MP</i>Mike 🎂</span>
       <span class="chip"><i>EG</i>Eric</span>
       <span class="chip"><i>JB</i>Josh</span>
@@ -270,48 +269,43 @@ dialog.lb::backdrop{background:rgba(10,16,12,.92)}
       <span class="chip"><i>DJ</i>Dave</span>
       <span class="chip"><i>PB</i>Patrick</span>
       <span class="chip"><i>RL</i>Ross</span>
-      <span class="chip maybe" title="60/40 per Mike"><i>?</i>+ Kenda &amp; Winnie (60/40)</span>
+      <span class="chip maybe" title="60/40 per Mike"><i>?</i>Kenda &amp; Winnie</span>
     </div>
   </div>
-  <div class="scrollcue">SCROLL ↓</div>
 </header>
 
 <section id="brief"><div class="wrap">
-  <div class="kicker reveal">The brief</div>
-  <h2 class="reveal">Mike's rules of the road</h2>
-  <p class="lede reveal">Straight from the birthday boy's 8-page options doc. No plus-ones. Everything below is priced and checked against these rules.</p>
+  <h2 class="reveal">The brief</h2>
   <div class="rules">
-    <div class="rule reveal"><div class="ico">📅</div><b>Fri 12/11 – Sun 12/13</b><p>Two nights. Leave Friday between 1 and 3 pm.</p></div>
-    <div class="rule reveal"><div class="ico">💵</div><b>$300 a head, max</b><p>For the whole stay, all fees and taxes in.</p></div>
-    <div class="rule reveal"><div class="ico">🛏️</div><b>A real bed for everyone</b><p>Sofa beds, air mattresses and futons don't count.</p></div>
-    <div class="rule reveal"><div class="ico">🌲</div><b>Cabin in the pines</b><p>Rustic, conifer forest. Snow welcome. Multiple units OK if same property.</p></div>
-    <div class="rule reveal"><div class="ico">🚗</div><b>≤ 3 hours from Arcadia</b><p>Middle of Google's Friday-traffic range.</p></div>
-    <div class="rule reveal"><div class="ico">🔥</div><b>Fire pit: nice to have</b><p>KOA campgrounds: hard no.</p></div>
+    <div class="rule reveal"><div class="ico">📅</div><b>Fri–Sun, 2 nights</b></div>
+    <div class="rule reveal"><div class="ico">💵</div><b>≤ $300 each, all-in</b></div>
+    <div class="rule reveal"><div class="ico">🛏️</div><b>Real bed each</b></div>
+    <div class="rule reveal"><div class="ico">🌲</div><b>Pine forest cabin</b></div>
+    <div class="rule reveal"><div class="ico">🚗</div><b>≤ 3 hr drive</b></div>
+    <div class="rule reveal"><div class="ico">🔥</div><b>Fire pit a plus</b></div>
   </div>
-  <div class="pick reveal"><span class="tag">Mike's top pick</span><span><b>Arrowhead Pine Rose Cabins</b>, the only one with a fire pit. Runner-up: the <b>Cali Bear</b> log cabin in Big Bear. Decision expected by the end of this weekend.</span></div>
+  <div class="pick reveal"><span class="tag">Top pick</span><span><b>Pine Rose Cabins</b> · Runner-up: <b>Cali Bear</b></span></div>
 </div></section>
 
 <section id="price" class="alt"><div class="wrap">
   <div class="pc-head">
     <div>
-      <div class="kicker reveal">Price check</div>
-      <h2 class="reveal">What it costs you, by headcount</h2>
-      <p class="lede reveal">Slide the headcount. Each bar is the full 2-night total with fees and taxes, split evenly. The dashed line is Mike's $300 cap. Faded bars don't have enough real beds for that many people.</p>
+      <h2 class="reveal">Cost per person</h2>
     </div>
     <div class="counter reveal">
-      <div class="n"><b id="hc">7</b><span id="hcl">people · the 7 of us</span></div>
+      <div class="n"><b id="hc">7</b><span id="hcl">people</span></div>
       <input type="range" id="slider" min="6" max="12" step="1" value="7" aria-label="Headcount">
       <div class="presets">
-        <button data-n="7" class="on">The 7 of us</button>
-        <button data-n="9">+ Kenda &amp; Winnie</button>
-        <button data-n="6">Someone bails</button>
-        <button data-n="12">Max (12)</button>
+        <button data-n="7" class="on">7</button>
+        <button data-n="9">9</button>
+        <button data-n="6">6</button>
+        <button data-n="12">12</button>
       </div>
     </div>
   </div>
   <div class="pc-opts">
-    <label><input type="checkbox" id="showMore" checked> Include the 9+ backups</label>
-    <label><input type="checkbox" id="showWild"> Include wildcards &amp; estimates</label>
+    <label><input type="checkbox" id="showMore" checked> 9+ options</label>
+    <label><input type="checkbox" id="showWild"> Wildcards</label>
   </div>
   <div class="bars" id="bars"></div>
   <div class="legend">
@@ -320,40 +314,32 @@ dialog.lb::backdrop{background:rgba(10,16,12,.92)}
     <span><i style="background:repeating-linear-gradient(45deg,#cfc6b3 0 3px,#e2dac8 3px 6px)"></i>Not enough real beds</span>
     <span><i style="border-left:2px dashed var(--ember);border-radius:0;width:2px"></i>$300 cap</span>
   </div>
-  <p class="lede" style="font-size:14px;margin-top:14px">Prices were live on Nov 9 and can change. Totals for 7, 8, 10 and 11 people are filled in from the 6, 9 and 12 quotes; the A-Frame and the Chateau charge per extra guest, so those in-between numbers are estimates.</p>
+  <p class="lede" style="font-size:13px;margin-top:12px">2-night total incl. fees and taxes. Prices as of Nov 9.</p>
 </div></section>
 
 <section id="map-sec"><div class="wrap">
-  <div class="kicker reveal">The drive</div>
-  <h2 class="reveal">How far from Arcadia?</h2>
-  <p class="lede reveal">Google's mid-range Friday drive times from Arcadia, Dec 11, leaving at 1 pm or 3 pm. Everything in the mountains can need chains, so check road conditions the week of.</p>
+  <h2 class="reveal">Drive from Arcadia</h2>
   <div class="mapgrid">
     <div id="map" class="reveal" aria-label="Map of the cabin options and Arcadia"></div>
     <div class="reveal">
-      <div class="drive-legend"><span><i style="background:var(--pine)"></i>Leave 1 pm</span><span><i style="background:var(--moss)"></i>Leave 3 pm</span><span><i style="border-left:2px dashed var(--ember);width:2px;height:12px;border-radius:0"></i>3-hour limit</span></div>
+      <div class="drive-legend"><span><i style="background:var(--pine)"></i>1 pm</span><span><i style="background:var(--moss)"></i>3 pm</span><span><i style="border-left:2px dashed var(--ember);width:2px;height:12px;border-radius:0"></i>3 hr</span></div>
       <div class="drives" id="drives"></div>
     </div>
   </div>
 </div></section>
 
 <section id="cabins" class="alt"><div class="wrap">
-  <div class="kicker reveal">The shortlist</div>
-  <h2 class="reveal">Five cabins that pass every rule</h2>
-  <p class="lede reveal">Ranked by fit in Mike's doc. Click any photo to go full-screen. Nobody has reviewed every kitchen and bathroom yet, so look through the full listing before booking.</p>
+  <h2 class="reveal">Shortlist</h2>
   <div class="cabins" id="cabinList"></div>
 </div></section>
 
 <section id="more"><div class="wrap">
-  <div class="kicker reveal">Only if 9 or more come</div>
-  <h2 class="reveal">The bigger houses</h2>
-  <p class="lede reveal">Over $300 each at 6 people, inside budget at 9 or 12. Each has at least 12 real beds. Kenda and Winnie, this one's on you.</p>
+  <h2 class="reveal">If 9+ come</h2>
   <div class="minis" id="bigList"></div>
 </div></section>
 
 <section id="wild" class="alt"><div class="wrap">
-  <div class="kicker reveal">Wildcards</div>
-  <h2 class="reveal">Worth a phone call</h2>
-  <p class="lede reveal">Could be great, but the online info wasn't enough to confirm them.</p>
+  <h2 class="reveal">Worth a call</h2>
   <div class="longshots" id="longList"></div>
 
   <div class="ocean reveal" id="ocean">
@@ -361,38 +347,31 @@ dialog.lb::backdrop{background:rgba(10,16,12,.92)}
     <div class="txt">
       <div class="where">Ocean option · north of Santa Barbara</div>
       <h3>El Capitan Canyon</h3>
-      <p>A glamping resort 0.6 miles from El Capitan State Beach. Every unit gets its own fire pit and picnic table. The catch: oak and sycamore groves, not pines.</p>
+      <p>Glamping cabins near the beach, fire pit at each. Oak canyon, not pines.</p>
       <table>
         <tr><th>Group</th><th>Cabins (real beds)</th><th>Total pre-tax</th><th>Each</th></tr>
         <tr><td>6</td><td>2 Canyon Bunks</td><td>$856</td><td>$143</td></tr>
         <tr><td>9</td><td>3 Canyon Bunks</td><td>$1,284</td><td>$143</td></tr>
         <tr><td>12</td><td>3 Canyon Bunks</td><td>$1,284</td><td>$107</td></tr>
       </table>
-      <p style="font-size:14px;opacity:.85">Even with 15% tax assumed, every row stays under $170 each. Drive: about 3h05 leaving at 1 pm and 2h55 leaving at 3 pm. Call to confirm three Canyon Bunks are open: (805) 685-3887.</p>
+      <p style="font-size:14px;opacity:.85">Plus tax. ~3 hr drive.</p>
       <div class="cta"><a class="btn" href="https://be.synxis.com/?Hotel=45715&Chain=23827" target="_blank" rel="noopener">Live rates ↗</a><a class="btn ghost" href="https://elcapitancanyon.com/accommodations/cedar-cabins" target="_blank" rel="noopener">Cabin types ↗</a></div>
     </div>
   </div>
 </div></section>
 
 <section id="weather"><div class="wrap">
-  <div class="kicker reveal">Pack accordingly</div>
-  <h2 class="reveal">December averages</h2>
-  <p class="lede reveal">Long-term December highs and lows. Big Bear is the coldest and the most likely to have snow. Pine Mountain Club is the mildest, and it still freezes some nights.</p>
+  <h2 class="reveal">December weather</h2>
   <div class="wx" id="wx"></div>
 </div></section>
 
 <section id="before" class="alt"><div class="wrap">
-  <div class="kicker reveal">Before booking</div>
-  <h2 class="reveal">The checklist</h2>
-  <p class="lede reveal">Your checkmarks stay in your own browser and nobody else sees them.</p>
+  <h2 class="reveal">Before booking</h2>
   <ul class="checks" id="checks"></ul>
 </div></section>
 
 <section id="talk"><div class="wrap talk">
-  <div class="kicker reveal">Weigh in</div>
-  <h2 class="reveal">Draw lines in the sand. Bust chops.</h2>
-  <p class="lede reveal">Mike's words. Vote for a cabin, make suggestions, claim the king bed early. Comments need a free GitHub login, and you can react with emoji to anything already posted.</p>
-  <div class="prompts reveal"><span>🔥 Fire pit or bust</span><span>❄️ I want snow</span><span>🛏️ Calling the king</span><span>🍖 I'll grill</span><span>🎂 Cake ideas</span><span>🚗 Who's driving?</span></div>
+  <h2 class="reveal">Comments</h2>
   <div class="giscus-wrap reveal">
     <script src="https://giscus.app/client.js"
       data-repo="davidjette/price-bday"
@@ -413,8 +392,7 @@ dialog.lb::backdrop{background:rgba(10,16,12,.92)}
 </div></section>
 
 <footer><div class="wrap">
-  <div class="big">Happy birthday, Price. 🎂🌲</div>
-  <p>Built from Mike's Nov 9 “Birthday Weekend Cabin Options” doc. Prices and availability were live on the booking sites that day and can change or sell out. Photos are from each listing and link back to it.</p>
+  <p>Source: Mike's Nov 9 options doc. Prices can change.</p>
 </div></footer>
 
 <dialog class="lb" id="lb"><div class="stage">
@@ -435,64 +413,64 @@ const P=[
  {id:'pinerose',tier:'main',rank:1,name:'Arrowhead Pine Rose Cabins',short:'Pine Rose Cabins',area:'Twin Peaks, near Lake Arrowhead',ll:[34.2392,-117.2302],
   url:'https://www.expedia.com/Twin-Peaks-Hotels-Arrowhead-Pine-Rose-Cabins.h104866383.Hotel-Information',url2:'https://www.pinerose.com/cabins/3-bedrooms/smokey-bear',url2t:'Smokey Bear cabin',url3:'https://www.pinerose.com/cabins/2-bedrooms/deer-creek',url3t:'Deer Creek cabin',
   book:'Expedia',rating:'9.8/10',reviews:71,beds:12,fire:true,drive:[108,150],wx:'arrowhead',
-  ribbon:"Mike's top pick",
-  blurb:"A small resort of older wood cabins in the pines with a shared fire pit, hot tub and ping-pong. The group takes two cabins: Smokey Bear, a 1950s ranger's cabin with a big stone fireplace, and Deer Creek, knotty pine with a deck over a running creek.",
+  ribbon:'Top pick',
+  blurb:"Small resort of wood cabins: Smokey Bear + Deer Creek.",
   bedlist:['#3 Smokey Bear (sleeps 8): 3 doubles + 2 twins · $720','#14 Deer Creek: queen, twin and large twin (+ sofa bed) · $880','Up to 8 people fit in Smokey Bear alone'],
   tags:[['yes','🔥 Shared fire pit'],['','Hot tub'],['','Ping-pong'],['','Wood-burning fireplaces'],['','Check-in 4 pm · out 10 am'],['','21+ to check in']],
-  watch:"Expedia showed only one of each cabin left. The partial refund on Smokey Bear lapsed Nov 11; Deer Creek is partially refundable until Nov 27. The resort's big lodges (sleep 15–20) showed sold out online, so it's worth a call: (909) 337-2341.",
+  watch:"Only one of each cabin left. Big lodges: call (909) 337-2341.",
   cost:n=>n<=8?720:n<=12?1600:null},
  {id:'calibear',tier:'main',rank:2,name:'Cali Bear Lakefront Log Cabin',short:'Cali Bear (Big Bear)',area:'Big Bear Lake · Boulder Bay',ll:[34.24349,-116.95028],
   url:'https://www.airbnb.com/rooms/45364874',book:'Airbnb · instant book',rating:'4.81',reviews:54,beds:13,fire:false,drive:[135,175],wx:'bigbear',
   ribbon:'Runner-up',
-  blurb:"A real log cabin right on the lake with a stone wood-burning fireplace. The most authentically rustic interior of the five.",
+  blurb:"Lakefront log cabin, stone fireplace.",
   bedlist:['Bedroom 1: king, double, single','Bedroom 2: king + bunk','Bedroom 3: two bunks','Listing caps guests at 12'],
   tags:[['','Lakefront'],['','Stone wood fireplace'],['','Full refund before Dec 6'],['warn','Coldest spot'],['warn','No fire pit']],
-  watch:"Big Bear averages 44°F / 23°F in December, so plan for snow and freezing nights. Leaving at 3 pm, the drive is 2h55, right at the limit.",
+  watch:"Coldest option. 2h55 drive at 3 pm.",
   cost:n=>n<=12?1615.51:null},
  {id:'aframe',tier:'main',rank:3,name:'Enchanted Forest A-Frame',short:'Enchanted A-Frame (PMC)',area:'Pine Mountain Club',ll:[34.83714,-119.16396],
   url:'https://www.airbnb.com/rooms/46837983',book:'Airbnb · request to book',rating:'4.81',reviews:216,beds:13,fire:false,drive:[125,140],wx:'pmc',
-  blurb:"Three stories of A-frame by a forest trailhead, with a sauna, wood fireplace, pellet stove, free firewood and a record player with a vintage collection. Wood A-frame ceilings in the main rooms, though at least one bedroom is modern.",
+  blurb:"3-story A-frame with sauna and fireplace.",
   bedlist:['Bedroom 1: queen + single','Bedroom 2: king','Bedroom 3: double','Open bedroom area: double + two bunks'],
   tags:[['yes','🧖 Sauna'],['','Free firewood'],['','Record player'],['','Mildest weather'],['warn','Tax may be extra'],['warn','Refund only within 24 h']],
-  watch:"Checkout showed no tax line, so ask the host whether tax is added. The host has to approve the booking, and the full refund only lasts 24 hours after booking.",
+  watch:"Tax may be extra. Host approval needed.",
   est:'per guest',cost:n=>n<=12?1184.62+(n-6)*48.75:null},
  {id:'crestline',tier:'main',rank:4,name:'Charming Getaway Cabin',short:'Charming Getaway (Crestline)',area:'Crestline · Lake Gregory',ll:[34.2458,-117.2703],
   url:'https://www.airbnb.com/rooms/1521129663879081666',book:'Airbnb · instant book',rating:'5.0',reviews:21,beds:15,fire:false,drive:[108,145],wx:'arrowhead',
-  blurb:"A lake-view cabin about a 5-minute walk from Lake Gregory, with custom rustic furniture, log bunk beds and a game room with a pool table. The most real beds of the bunch.",
+  blurb:"Lake-view cabin with game room.",
   bedlist:['Bedroom 1: two bunks','Bedroom 2: queen + single','Bedroom 3: king','Bedroom 4: double + two bunks','Listing caps guests at 12'],
   tags:[['yes','🎱 Pool table'],['','Log bunks'],['','Closest drive'],['','Full refund before Nov 27'],['warn','No fire pit']],
-  watch:"Airbnb shows only an approximate location until you book, so the drive could be off by a few minutes.",
+  watch:"Approximate location until booked.",
   cost:n=>n<=12?1660.64:null},
  {id:'chateau',tier:'main',rank:5,name:"1920's Lakefront Mountain Chateau",short:'1920s Chateau (Arrowhead)',area:'Lake Arrowhead',ll:[34.26458,-117.19597],
   url:'https://www.airbnb.com/rooms/1321805074575468357',book:'Airbnb · request to book',rating:'5.0',reviews:11,beds:14,fire:false,drive:[120,165],wx:'arrowhead',
-  blurb:"A 1920s lakefront Tudor with a private dock, timber-beamed great room and a chandelier. It's historic, and more grand house than cabin.",
+  blurb:"1920s lakefront Tudor with private dock.",
   bedlist:['Bedrooms 1 & 3: king each','Bedrooms 2 & 4: double each','Bedroom 5: double + single','Bedroom 6: queen + single','Listing caps guests at 12'],
   tags:[['yes','⚓ Private dock'],['','Timber-beamed great room'],['gone','Full refund (ended Nov 11)'],['warn','Only 11 reviews'],['warn','No fire pit']],
-  watch:"The full-refund window closed Nov 11 at 3 pm. The host has to approve the booking.",
+  watch:"Host approval needed. Only 11 reviews.",
   est:'10–11',cost:n=>n<=9?1661.71:n<=12?1661.71+(n-9)*(1875.71-1661.71)/3:null},
  // 9+ backups
  {id:'idyllwild-retreat',tier:'big',name:'Idyllwild Retreat',short:'Idyllwild Retreat',area:'Idyllwild',ll:[33.75116,-116.74145],url:'https://www.airbnb.com/rooms/1446482977017112341',book:'Request to book',beds:12,fire:true,drive:[150,190],driveNote:'est. (Lawler Lodge)',wx:'idyllwild',
-  blurb:'Stone fireplace, pool table, poker table, wood stove, and a fire pit with views.',tags:[['yes','🔥 Fire pit'],['','Game room'],['gone','Full refund (ended Nov 11)']],cost:n=>n<=12?1896.40:null},
+  blurb:'Fire pit, game room.',tags:[['yes','🔥 Fire pit'],['','Game room'],['gone','Full refund (ended Nov 11)']],cost:n=>n<=12?1896.40:null},
  {id:'sublime',tier:'big',name:'Sublime For-Rest',short:'Sublime For-Rest (Big Bear)',area:'Big Bear Lake',ll:[34.24473,-116.86869],url:'https://www.airbnb.com/rooms/7113291',book:'Instant book',beds:12,fire:false,drive:[135,175],driveNote:'est. (≈ Cali Bear)',wx:'bigbear',
-  blurb:'Cedar and rustic, with wood-burning fireplaces, a hot tub and a game room.',tags:[['','Hot tub'],['','Game room'],['','Full refund before Dec 6']],cost:n=>n<=12?2126.02:null},
+  blurb:'Hot tub, game room.',tags:[['','Hot tub'],['','Game room'],['','Full refund before Dec 6']],cost:n=>n<=12?2126.02:null},
  {id:'chimneys',tier:'big',name:'The Lodge at 11 Chimneys',short:'Lodge at 11 Chimneys',area:'Idyllwild',ll:[33.73904,-116.73144],url:'https://www.airbnb.com/rooms/30371614',book:'Request to book',beds:12,fire:false,drive:[150,190],driveNote:'est. (Lawler Lodge)',wx:'idyllwild',
-  blurb:'6,000 sq ft and sleeps 14, with original fireplaces in the bedrooms, seven decks and seating for 14 at one table.',tags:[['','Fireplaces everywhere'],['','7 decks'],['warn','Fire pits not allowed'],['gone','Full refund (ended Nov 11)']],cost:n=>n<=12?2273.26:null},
+  blurb:'6,000 sq ft, many fireplaces.',tags:[['','Fireplaces everywhere'],['','7 decks'],['warn','Fire pits not allowed'],['gone','Full refund (ended Nov 11)']],cost:n=>n<=12?2273.26:null},
  {id:'creeklodge',tier:'big',name:'The Creek Lodge in Town',short:'Creek Lodge (Idyllwild)',area:'Idyllwild',ll:[33.74781,-116.7075],url:'https://www.airbnb.com/rooms/776897678110786968',book:'Request to book',beds:12,fire:false,drive:[150,190],driveNote:'est. (Lawler Lodge)',wx:'idyllwild',
-  blurb:'A creekside lodge in town with a bar, pool table, fireplace and decks. Walk to everything.',tags:[['','Bar + pool table'],['','Creekside'],['warn','Fire pits not allowed'],['gone','Full refund (ended Nov 11)']],cost:n=>n<=12?2515.70:null},
+  blurb:'Creekside, in town.',tags:[['','Bar + pool table'],['','Creekside'],['warn','Fire pits not allowed'],['gone','Full refund (ended Nov 11)']],cost:n=>n<=12?2515.70:null},
  // wildcards
  {id:'pmc-house',tier:'wild',name:'Pine Mountain Club Family House',short:'PMC Family House',area:'Pine Mountain Club',ll:[34.84107,-119.15155],url:'https://www.airbnb.com/rooms/846801245828883653',book:'Request to book; full refund before Dec 10',beds:14,fire:true,drive:[125,140],driveNote:'est. (≈ A-Frame)',wx:'pmc',
-  blurb:'14 real beds (three bunks in one room, plus a queen in each of four bedrooms), a sauna and a fire pit. Nobody has checked the photos for rustic charm yet, and checkout showed no tax line.',tags:[['yes','🔥 Fire pit'],['','Sauna'],['warn','Tax may be extra']],cost:n=>n<=12?1316.25:null},
+  blurb:'Sauna and fire pit. Tax may be extra.',tags:[['yes','🔥 Fire pit'],['','Sauna'],['warn','Tax may be extra']],cost:n=>n<=12?1316.25:null},
  {id:'lawler',tier:'wild',name:'Lawler Lodge & Alpine Cabins',short:'Lawler Lodge (county park)',area:'9 mi north of Idyllwild · 5,300 ft',ll:[33.8072,-116.7707],url:'https://rivcoparks.org/node/421',url2:'https://rivcoparks.org/node/1496',url2t:'Cabin rates',beds:null,fire:true,drive:[150,190],wx:'idyllwild',
-  blurb:'A Riverside County Parks group site with a lodge built in 1918. $360 a night for all the Alpine Cabins, which hold up to 60 people. Fireplace inside, fire ring outside, firewood $8 a bundle. Reserve by phone: 800-234-7275.',
+  blurb:'County park group cabins. Book by phone: 800-234-7275.',
   tags:[['yes','🔥 Fire ring'],['warn','Real beds unconfirmed'],['warn','3h10 at 3 pm']],est:'quote',cost:n=>720},
  {id:'greysq',tier:'wild',name:'Grey Squirrel Resort',short:'Grey Squirrel (Big Bear)',area:'Big Bear',ll:[34.2465,-116.9035],url:'https://www.expedia.com/Hotel-Search?destination=Grey%20Squirrel%20Resort%20Big%20Bear&startDate=2026-12-11&endDate=2026-12-13',beds:null,fire:false,drive:[135,175],driveNote:'est.',wx:'bigbear',
-  blurb:'Expedia showed $1,404 total for 12 people (about $117 each). Rated 7.6/10 from 125 reviews. Photos and the price for 6 weren\'t checked.',tags:[['warn','Priced for 12 only']],est:'12 only',cost:n=>1404},
+  blurb:'Rated 7.6/10. Priced for 12 only.',tags:[['warn','Priced for 12 only']],est:'12 only',cost:n=>1404},
  {id:'knicker',tier:'wild',name:'Knickerbocker Mansion & Estates',short:'Knickerbocker (Big Bear)',area:'Big Bear',ll:[34.2489,-116.9112],url:'https://www.expedia.com/Hotel-Search?destination=Knickerbocker%20Mansion%20Big%20Bear&startDate=2026-12-11&endDate=2026-12-13',beds:null,fire:false,drive:[135,175],driveNote:'est.',wx:'bigbear',
-  blurb:'Expedia showed $2,374 total for 12 people (about $198 each). Rated 10/10 from 61 reviews. The price for 6 or 9 wasn\'t checked.',tags:[['warn','Priced for 12 only']],est:'12 only',cost:n=>2374},
+  blurb:'Rated 10/10. Priced for 12 only.',tags:[['warn','Priced for 12 only']],est:'12 only',cost:n=>2374},
  {id:'noon',tier:'wild',name:'Noon Lodge at Mallard Bay',short:'Noon Lodge',area:'Big Bear',url:'https://thehotelguru.com/hotel/noon-lodge-at-mallard-bay-california',
-  blurb:'Described as a 1950s retreat of 15 rustic self-catering cabins in the pines, with a campfire. No price or availability found.',tags:[['yes','🔥 Campfire'],['warn','No price found']]},
+  blurb:'Rustic cabins, campfire. No price found.',tags:[['yes','🔥 Campfire'],['warn','No price found']]},
  {id:'angelus',tier:'wild',name:'The Lodge at Angelus Oaks',short:'Angelus Oaks',area:'Angelus Oaks, Hwy 38',url:'https://outdoorproject.com/node/5463',
-  blurb:'A lodge and cabins from the 1930s. The online prices are old and the drive wasn\'t measured.',tags:[['warn','Prices stale']]},
+  blurb:'1930s lodge. Prices stale.',tags:[['warn','Prices stale']]},
  {id:'elcap',tier:'ocean',name:'El Capitan Canyon',short:'El Capitan Canyon (ocean)',area:'Santa Barbara coast',ll:[34.4628,-120.0230],url:'https://be.synxis.com/?Hotel=45715&Chain=23827',fire:true,drive:[185,175],wx:null,est:'tax',cost:n=>n<=8?856*1.15:n<=12?1284*1.15:null}
 ];
 const WX={arrowhead:{n:'Lake Arrowhead · Twin Peaks · Crestline',hi:50,lo:28,src:'https://weatherspark.com/y/1949/Average-Weather-in-Lake-Arrowhead-California-United-States-Year-Round'},
@@ -533,7 +511,7 @@ function renderBars(n){
    <div class="amt">${r.fits?fmt(r.pp):'–'}<small>${r.fits?'each':''}</small></div></div>`}).join('');
 }
 function setN(n){n=+n;$('#slider').value=n;$('#hc').textContent=n;
- $('#hcl').textContent='people · '+({6:'someone bailed',7:'the 7 of us',9:'+ Kenda & Winnie',12:'max capacity'}[n]||'');
+ 
  document.querySelectorAll('.presets button').forEach(b=>b.classList.toggle('on',+b.dataset.n===n));
  renderBars(n);updateCardPrices(n)}
 $('#slider').addEventListener('input',e=>setN(e.target.value));
@@ -573,9 +551,9 @@ function cardHTML(p){const ph=photosFor(p);const wx=WX[p.wx];
     <div><b>${wx.hi}°/${wx.lo}°</b><span>Dec hi/lo</span></div>
    </div>
    <div class="pp" data-pp="${p.id}"></div>
-   <div class="tags">${p.tags.map(([c,t])=>`<span class="tag ${c}">${t}</span>`).join('')}</div>
-   <details class="beds"><summary>Who sleeps where</summary><ul>${p.bedlist.map(b=>`<li>${esc(b)}</li>`).join('')}</ul></details>
-   <div class="watch"><b>Watch for:</b> ${esc(p.watch)}</div>
+   <div class="tags">${p.tags.slice(0,3).map(([c,t])=>`<span class="tag ${c}">${t}</span>`).join('')}</div>
+   <details class="beds"><summary>Beds</summary><ul>${p.bedlist.map(b=>`<li>${esc(b)}</li>`).join('')}</ul></details>
+   <div class="watch"> ${esc(p.watch)}</div>
    <div class="cta"><a class="btn" href="${p.url}" target="_blank" rel="noopener">View on ${p.book.split(' ')[0]} ↗</a>${p.url2?`<a class="btn ghost" href="${p.url2}" target="_blank" rel="noopener">${p.url2t} ↗</a>`:''}${p.url3?`<a class="btn ghost" href="${p.url3}" target="_blank" rel="noopener">${p.url3t} ↗</a>`:''}</div>
   </div></article>`}
 $('#cabinList').innerHTML=P.filter(p=>p.tier==='main').map(cardHTML).join('');
@@ -631,8 +609,7 @@ map.fitBounds(L.latLngBounds([ARCADIA,...mapP.map(p=>p.ll)]).pad(.08));
 const dl=P.filter(p=>p.drive&&(p.tier==='main'||p.tier==='ocean'||p.id==='lawler'));
 $('#drives').innerHTML=dl.sort((a,b)=>a.drive[0]-b.drive[0]).map(p=>{const s=220;
  return `<div class="drive" data-id="${p.id}"><div class="dn"><span>${p.rank?p.rank+'. ':''}${esc(p.short)}</span><small>${hm(p.drive[0])} / ${hm(p.drive[1])}</small></div>
- <div class="dbar ${p.drive[1]>180?'over':''}"><div class="a" style="width:${p.drive[0]/s*100}%"></div><div class="b" style="width:${Math.min(100,p.drive[1]/s*100)}%"></div><div class="lim"></div></div></div>`}).join('')+
- '<p style="font-size:12.5px;color:var(--mute);margin-top:10px">Idyllwild drives use the Lawler Lodge site, 9 miles north of town. El Capitan is the odd one out: leaving at 3 pm is quicker than 1 pm.</p>';
+ <div class="dbar ${p.drive[1]>180?'over':''}"><div class="a" style="width:${p.drive[0]/s*100}%"></div><div class="b" style="width:${Math.min(100,p.drive[1]/s*100)}%"></div><div class="lim"></div></div></div>`}).join('');
 document.querySelectorAll('.drive').forEach(d=>d.onclick=()=>{const m=markers[d.dataset.id];if(m){map.flyTo(m.getLatLng(),11,{duration:.8});m.openPopup()}});
 
 /* weather */
@@ -645,17 +622,9 @@ document.querySelectorAll('.drive').forEach(d=>d.onclick=()=>{const m=markers[d.
   <div class="note">${w.note||''}${w.src?` · <a href="${w.src}" target="_blank" rel="noopener">source</a>`:''}</div></div>`}).join('')})();
 
 /* checklist */
-(function(){const items=[
- ['Settle the headcount. At 6 people, Pine Rose (Smokey Bear cabin only) and the A-Frame are cheapest per person.'],
- ['Nov 11 deadlines: last day for a full refund at the Chateau, Idyllwild Retreat, 11 Chimneys and Creek Lodge, and a partial refund on Smokey Bear.','passed'],
- ['Go through each listing\'s full photo set, especially kitchens and bathrooms.'],
- ['For the two Pine Mountain Club Airbnbs, ask the host whether tax is added on top.'],
- ['Read each house\'s rules on maximum guests (most cap at 12), parties and quiet hours.'],
- ['The week of the trip, check mountain road and chain-control conditions. All of these areas can get snow.'],
- ['Re-check prices at checkout. They were live Nov 9, but they can change.'],
- ['Call Pine Rose about the big lodges (sleep 15–20): (909) 337-2341.']];
+(function(){const items=[['Settle headcount'],['Review photos (kitchens, baths)'],['Ask PMC hosts about tax'],['Check house rules'],['Check chain control week of'],['Re-check prices at checkout']];
  let st={};try{st=JSON.parse(localStorage.getItem('pc-checks')||'{}')}catch(e){}
- $('#checks').innerHTML=items.map(([t,f],i)=>`<li class="${st[i]?'done':''}"><input type="checkbox" id="ck${i}" ${st[i]?'checked':''}><span><label for="ck${i}">${esc(t)}</label>${f?'<span class="passed">date passed</span>':''}</span></li>`).join('');
+ $('#checks').innerHTML=items.map(([t,f],i)=>`<li class="${st[i]?'done':''}"><input type="checkbox" id="ck${i}" ${st[i]?'checked':''}><span><label for="ck${i}">${esc(t)}</label></span></li>`).join('');
  document.querySelectorAll('#checks input').forEach((c,i)=>c.onchange=()=>{st[i]=c.checked;c.closest('li').classList.toggle('done',c.checked);try{localStorage.setItem('pc-checks',JSON.stringify(st))}catch(e){}})})();
 
 setN(7);
