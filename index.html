@@ -232,10 +232,13 @@ footer a{color:#fff}
 footer .big{font-family:var(--serif);font-size:28px;color:#fff;margin-bottom:8px}
 
 /* lightbox */
-dialog.lb{border:0;padding:0;background:transparent;max-width:100vw;max-height:100vh;width:100vw;height:100vh}
+dialog.lb{border:0;padding:0;background:transparent;max-width:100vw;max-height:100vh;max-height:100dvh;width:100vw;height:100vh;height:100dvh}
 dialog.lb::backdrop{background:rgba(10,16,12,.92)}
 .lb .stage{position:relative;width:100%;height:100%;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:10px;padding:20px}
-.lb img{max-width:min(1280px,94vw);max-height:82vh;object-fit:contain;border-radius:8px}
+.lb img{width:min(1280px,94vw);height:auto;max-height:78vh;max-height:78dvh;object-fit:contain;border-radius:8px}
+.gal.loading .main::after,.lb.loading .stage::after{content:"";position:absolute;top:14px;right:14px;width:18px;height:18px;border-radius:50%;border:2px solid rgba(255,255,255,.35);border-top-color:#fff;animation:spin .8s linear infinite;pointer-events:none}
+.lb.loading .stage::after{top:28px;left:28px;right:auto}
+@keyframes spin{to{transform:rotate(360deg)}}
 .lb .lc{color:#fff;font-size:14px;opacity:.85;text-align:center}
 .lb button{position:absolute;background:rgba(255,255,255,.12);color:#fff;border:0;width:48px;height:48px;border-radius:50%;font-size:22px;cursor:pointer}
 .lb .x{top:16px;right:16px}.lb .lp{left:16px;top:50%}.lb .ln{right:16px;top:50%}
@@ -380,7 +383,7 @@ dialog.lb::backdrop{background:rgba(10,16,12,.92)}
   <button class="ln" aria-label="Next">›</button>
 </div></dialog>
 
-<script src="photos.js"></script>
+<script src="photos.js?v=2"></script>
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script>
 const ARCADIA=[34.1397,-118.0353];
@@ -497,15 +500,24 @@ $('#showMore').addEventListener('change',()=>renderBars(+$('#slider').value));
 $('#showWild').addEventListener('change',()=>renderBars(+$('#slider').value));
 
 /* lightbox */
-const lb=$('#lb');let lbSet=[],lbI=0;
-function openLB(set,i){lbSet=set;lbI=i;showLB();lb.showModal()}
-function showLB(){const x=lbSet[lbI];lb.querySelector('img').src=x.f;lb.querySelector('img').alt=x.cap;lb.querySelector('.lc').textContent=`${x.cap} · ${lbI+1} / ${lbSet.length}`}
+const th=f=>f.replace('img/','img/t/');
+/* full-size loader: show the thumb at once, swap to full only once it has loaded */
+const LOADED=new Set(),PEND=new Map();
+function loadFull(f){if(LOADED.has(f))return Promise.resolve(true);if(!PEND.has(f))PEND.set(f,new Promise(r=>{const im=new Image();im.onload=()=>{LOADED.add(f);r(true)};im.onerror=()=>{PEND.delete(f);r(false)};im.src=f}));return PEND.get(f)}
+function showPhoto(img,host,set,k,isCurrent){const f=set[k].f;img.alt=set[k].cap;
+ if(LOADED.has(f)){img.src=f;host.classList.remove('loading')}
+ else{img.src=th(f);host.classList.add('loading');loadFull(f).then(ok=>{if(!isCurrent())return;if(ok)img.src=f;host.classList.remove('loading')})}
+ if(set.length>1){loadFull(set[(k+1)%set.length].f);loadFull(set[(k-1+set.length)%set.length].f)}}
+const lb=$('#lb'),lbImg=lb.querySelector('img');let lbSet=[],lbI=0;
+function openLB(set,i){lbSet=set;lbI=i;showLB();if(!lb.open)lb.showModal()}
+function showLB(){const n=lbI,set=lbSet;showPhoto(lbImg,lb,set,n,()=>lb.open&&lbSet===set&&lbI===n);lb.querySelector('.lc').textContent=`${set[n].cap} · ${n+1} / ${set.length}`}
 lb.querySelector('.x').onclick=()=>lb.close();
 lb.querySelector('.lp').onclick=()=>{lbI=(lbI-1+lbSet.length)%lbSet.length;showLB()};
 lb.querySelector('.ln').onclick=()=>{lbI=(lbI+1)%lbSet.length;showLB()};
 lb.addEventListener('click',e=>{if(e.target.classList.contains('stage'))lb.close()});
 addEventListener('keydown',e=>{if(!lb.open)return;if(e.key==='ArrowLeft')lb.querySelector('.lp').click();if(e.key==='ArrowRight')lb.querySelector('.ln').click()});
-const th=f=>f.replace('img/','img/t/');
+{let sx=null;lb.addEventListener('touchstart',e=>sx=e.touches[0].clientX,{passive:true});
+ lb.addEventListener('touchend',e=>{if(sx===null)return;const dx=e.changedTouches[0].clientX-sx;sx=null;if(Math.abs(dx)>40)lb.querySelector(dx<0?'.ln':'.lp').click()},{passive:true})}
 
 /* main cards */
 function photosFor(p){const s=(PH[p.id]||[]).slice();if(p.id!=='pinerose'&&s.length>1){const ext=s.findIndex(x=>/exterior/i.test(x.cap));if(ext>0)s.unshift(s.splice(ext,1)[0])}return s}
@@ -513,7 +525,7 @@ function cardHTML(p){const ph=photosFor(p);const wx=WX[p.wx];
  return `<article class="cabin reveal" id="c-${p.id}">
   <div class="gal" data-id="${p.id}">
    <div class="rank">${p.rank}</div>${p.ribbon?`<div class="ribbon">${p.ribbon}</div>`:''}
-   <div class="main"><img src="${ph[0].f}" alt="${esc(ph[0].cap)}"><div class="cap">${esc(ph[0].cap)}</div></div>
+   <div class="main"><img src="${th(ph[0].f)}" alt="${esc(ph[0].cap)}"><div class="cap">${esc(ph[0].cap)}</div></div>
    <button class="nav p" aria-label="Previous photo">‹</button><button class="nav n" aria-label="Next photo">›</button>
    <div class="thumbs">${ph.map((x,i)=>`<img src="${th(x.f)}" alt="${esc(x.cap)}" data-i="${i}" class="${i?'':'on'}" loading="lazy">`).join('')}</div>
   </div>
@@ -536,13 +548,14 @@ function cardHTML(p){const ph=photosFor(p);const wx=WX[p.wx];
 $('#cabinList').innerHTML=P.filter(p=>p.tier==='main').map(cardHTML).join('');
 document.querySelectorAll('.gal').forEach(g=>{const ph=photosFor(P.find(p=>p.id===g.dataset.id));let i=0;
  const main=g.querySelector('.main img'),cap=g.querySelector('.cap'),thumbs=[...g.querySelectorAll('.thumbs img')];
- const go=k=>{i=(k+ph.length)%ph.length;main.style.opacity=.2;setTimeout(()=>{main.src=ph[i].f;main.alt=ph[i].cap;cap.textContent=ph[i].cap;main.style.opacity=1},140);
-  thumbs.forEach((t,j)=>t.classList.toggle('on',j===i));thumbs[i].scrollIntoView({block:'nearest',inline:'center',behavior:'smooth'})};
+ const go=(k,scroll=true)=>{i=(k+ph.length)%ph.length;const n=i;cap.textContent=ph[n].cap;showPhoto(main,g,ph,n,()=>i===n);
+  thumbs.forEach((t,j)=>t.classList.toggle('on',j===n));if(scroll){const s=thumbs[n].parentNode,sr=s.getBoundingClientRect(),tr=thumbs[n].getBoundingClientRect();s.scrollTo({left:s.scrollLeft+tr.left-sr.left-(sr.width-tr.width)/2,behavior:'smooth'})}};
+ go(0,false);
  g.querySelector('.p').onclick=()=>go(i-1);g.querySelector('.n').onclick=()=>go(i+1);
  thumbs.forEach(t=>t.onclick=()=>go(+t.dataset.i));
  g.querySelector('.main').onclick=()=>openLB(ph,i);
  let sx=null;g.querySelector('.main').addEventListener('touchstart',e=>sx=e.touches[0].clientX,{passive:true});
- g.querySelector('.main').addEventListener('touchend',e=>{if(sx===null)return;const dx=e.changedTouches[0].clientX-sx;if(Math.abs(dx)>40){go(i+(dx<0?1:-1));sx=null}},{passive:true});
+ g.querySelector('.main').addEventListener('touchend',e=>{if(sx===null)return;const dx=e.changedTouches[0].clientX-sx;sx=null;if(Math.abs(dx)>40)go(i+(dx<0?1:-1))},{passive:true});
 });
 function updateCardPrices(n){document.querySelectorAll('[data-pp]').forEach(el=>{const p=P.find(x=>x.id===el.dataset.pp);const t=p.cost(n);
  const fits=t!==null&&n<=capOf(p);
